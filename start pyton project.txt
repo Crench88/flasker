@@ -1,0 +1,19 @@
+
+Change Directory to the project folder
+cd /c/flasker
+
+start the virtualized folder
+source virt/scripts/activate
+
+Check to make sure that Flask is in the virtualized folder
+pip freeze
+
+export path variable
+export FLASK_APP=development
+
+export base file to development variable
+export FLASK_APP=hello.py
+
+Run server
+flask run
+

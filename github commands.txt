@@ -1,3 +1,10 @@
+Break Out of the Flask Server 
+(ctrl + c)
+
+Deactivate the Virt server
+deactivate
+
+
 Commands to add, Commit, and Push to git Hub
 
 
@@ -10,3 +17,8 @@ Commands to add, Commit, and Push to git Hub
 3) Puch Committed Changes to Git Hub
 git push
 
+Activate Virt
+source virt/Scripts/activate
+
+Start Flask Server
+flask run
