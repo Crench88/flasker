@@ -1,0 +1,55 @@
+SQLAlchemy Steps for Database build
+
+
+
+Add Simple Database and table from main app py file.
+
+On main app page: 
+from flask_sqlalchemy import SQLAlchemy 
+from datetime import datetime
+
+
+# add databse 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  -- can be any database like mysql or posgres etc.
+
+
+# Create Model  -- defines the table
+class Users(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(100), nullable=False)
+	email = db.Column(db.String(120), nullable=False, unique=True)
+	date_added = db.Column(db.DateTime, default=datetime.utcnow)
+
+	# Create A String
+	def __rep__(self):
+		return '<Name %r>' % self.name
+
+------------------------------------------------------------------------------------------
+
+#Create a Form Class for the add user page:
+class UserForm(FlaskForm):
+	name=StringField("Name", validators=[DataRequired()])
+	email=StringField("Email", validators=[DataRequired()])
+	submit=SubmitField("Submit")
+
+# route to the users add page to input data in to the new table. 
+@app.route('/users/add', methods=['GET', 'POST'])
+def add_user():
+	return render_template('add_user.html')
+
+-----------------------------------------------------------------------------------------
+In git bash Terminal:
+winpty python
+
+# commands to import and build database file with a user table. 
+
+from hello import db   -- hello = main app py file
+
+db.create_all()  -- function writes database and table to the file folder. 
+
+exit() -- exit out of python shell 
+-----------------------------------------------------------------------------------------
+
+flask run
+
+
