@@ -1,0 +1,16 @@
+@app.route('/sites')
+def post():
+    # Connect to db
+    db = sqlite3.connect('MIS_Customers_Details.db')
+    cursor = db.cursor()
+
+    # Get data from db
+   # cursor.execute('SELECT * FROM sites WHERE id=%s' % _id)
+    cursor.execute(""" SELECT * FROM siteAddress 
+                           INNER JOIN mustimuhw_Version ON siteAddress.siteID = mustimuhw_Version.siteID
+                            ORDER BY siteName""")
+    sites = cursor.fetchall()
+
+    # Close db connection
+    db.close()
+    return render_template('sites.html', sites=sites)

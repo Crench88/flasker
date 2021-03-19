@@ -9,7 +9,7 @@ Commands to add, Commit, and Push to git Hub
 
 
 1) Get all Changes for Git upload
- git add .
+git add .
 
 2)Commit all Changes for git upload
  git commit -am 'tweaked 500.html page'
